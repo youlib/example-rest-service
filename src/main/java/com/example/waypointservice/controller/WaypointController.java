@@ -1,18 +1,16 @@
-package com.example.waypointservice;
+package com.example.waypointservice.controller;
 
-import com.example.waypointservice.json.Waypoint;
+import com.example.waypointservice.DTO.WaypointServiceResponse;
+import com.example.waypointservice.model.Waypoint;
+import com.example.waypointservice.service.WaypointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotNull;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class WaypointController {
     private final WaypointService waypointService;
 
     @Autowired
-    public WaypointController(WaypointService waypointService) {
+    public WaypointController(@NotNull WaypointService waypointService) {
         this.waypointService = waypointService;
     }
 

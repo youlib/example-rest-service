@@ -1,6 +1,6 @@
-package com.example.waypointservice;
+package com.example.waypointservice.controller;
 
-import com.example.waypointservice.json.Waypoint;
+import com.example.waypointservice.model.Waypoint;
 import org.springframework.util.Assert;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

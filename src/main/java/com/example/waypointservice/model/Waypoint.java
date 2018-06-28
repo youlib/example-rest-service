@@ -1,8 +1,9 @@
-package com.example.waypointservice.json;
+package com.example.waypointservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author Julia Bogdanou
@@ -59,5 +60,23 @@ public class Waypoint {
 
     public void setSpeedLimit(Double speedLimit) {
         this.speedLimit = speedLimit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Waypoint waypoint = (Waypoint) o;
+        return Objects.equals(localDateTime, waypoint.localDateTime) &&
+                Objects.equals(timestamp, waypoint.timestamp) &&
+                Objects.equals(position, waypoint.position) &&
+                Objects.equals(speed, waypoint.speed) &&
+                Objects.equals(speedLimit, waypoint.speedLimit);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(localDateTime, timestamp, position, speed, speedLimit);
     }
 }

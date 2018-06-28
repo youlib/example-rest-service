@@ -1,10 +1,10 @@
 package com.example.waypointservice;
 
-import com.example.waypointservice.WaypointServiceResponse;
-import com.example.waypointservice.json.Position;
-import com.example.waypointservice.json.Waypoint;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.waypointservice.DTO.WaypointServiceResponse;
+import com.example.waypointservice.model.Position;
+import com.example.waypointservice.model.Waypoint;
+
+import java.util.*;
 
 /**
  * @author Julia Bogdanou
@@ -91,9 +91,7 @@ public class WaypointFixtureFactory {
     }
 
     public static Waypoint generateWaypoint(String timestamp, double latitude, double longtitude, double speed, double speedLimit) {
-        Position position = new Position();
-        position.setLatitude(latitude);
-        position.setLongitude(longtitude);
+        Position position = generatePosition(latitude, longtitude);
 
         Waypoint waypoint = new Waypoint();
         waypoint.setTimestamp(timestamp);
@@ -105,13 +103,21 @@ public class WaypointFixtureFactory {
         return waypoint;
     }
 
+    public static Position generatePosition(double latitude, double longtitude) {
+        Position position = new Position();
+        position.setLatitude(latitude);
+        position.setLongitude(longtitude);
+        return position;
+    }
+
+
     public static WaypointServiceResponse generateWaypointServiceResponse(double distanceSpeeding, double totalDistance, long durationSpeeding, long totalDuration) {
         WaypointServiceResponse response = new WaypointServiceResponse.Builder()
-            .setDistanceSpeeding(distanceSpeeding)
-            .setDurationSpeeding(durationSpeeding)
-            .setTotalDistance(totalDistance)
-            .setTotalDuration(totalDuration)
-            .build();
+                .setDistanceSpeeding(distanceSpeeding)
+                .setDurationSpeeding(durationSpeeding)
+                .setTotalDistance(totalDistance)
+                .setTotalDuration(totalDuration)
+                .build();
         return response;
     }
 

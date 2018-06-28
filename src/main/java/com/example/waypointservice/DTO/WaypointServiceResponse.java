@@ -1,4 +1,4 @@
-package com.example.waypointservice;
+package com.example.waypointservice.DTO;
 
 import org.springframework.util.Assert;
 
